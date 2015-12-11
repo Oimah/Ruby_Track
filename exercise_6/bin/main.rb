@@ -17,7 +17,7 @@ def display_initial_property_values_for_bike
   puts ""
   puts "Vehicle name #{@bike.get_name}"
   puts "Vehicle price #{@bike.get_price}"
-  puts "Vehicle price #{@bike.get_dealer}"
+  puts "Vehicle dealer #{@bike.get_dealer}"
 end
 
 end
