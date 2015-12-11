@@ -2,7 +2,7 @@ class ChangeFactorialWithRangeAndCatchException
 
 def range_factorial_rewrite_with_exception(factorial)
   hash = Hash.new
-    begin
+  begin
       check_number(factorial)
   factorial_string = ""
   default = 1
@@ -14,15 +14,15 @@ def range_factorial_rewrite_with_exception(factorial)
 (factorial).downto(1).each do |i| 
     factorial_string.concat("#{i} #{i == 1 ? "" : "*"} ")
     default *= i
-end
+  end
   
     hash["factorial"] = factorial_string
     hash["result"] =  default
     hash
   rescue
     hash["factorial"] = "invalid number"
-     hash["result"] =  factorial
-     hash
+    hash["result"] =  factorial
+    hash
   end
 
 end
