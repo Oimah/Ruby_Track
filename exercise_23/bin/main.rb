@@ -2,16 +2,18 @@ require_relative "../lib/read_and_creat_file.rb"
 
 class Main
   def read_write_file
+    file = "../lib/newfile.csv"
    begin
-    ReadAndCreateFile.new.read_from_and_write_to
+    check_file_exist(file)
+    ReadAndCreateFile.new.read_from_and_write_to(file)
     puts "File writen successfully"
    rescue InvalidFileContentError
-      puts "File read error"
+      puts "No such file"
    end
   end
 
-  def check_file_exist
-    raise InvalidFileContentError unless 1 > 0
+  def check_file_exist(file)
+    raise InvalidFileContentError unless File.file?(file)
   end
 end
 

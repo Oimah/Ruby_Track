@@ -1,7 +1,7 @@
 class ReadAndCreateFile 
-  def read_from_and_write_to 
+  def read_from_and_write_to(file_param) 
   record_array = Array.new
-    data =  File.read("../lib/newfile.csv") #do |data|
+    data =  File.read(file_param) #do |data|
     record_array = data.split(',')
     file = File.new("../lib/employee_data.csv", "w")
       (2...record_array.size).each do |index|
