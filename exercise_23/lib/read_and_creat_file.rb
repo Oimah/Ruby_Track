@@ -1,12 +1,14 @@
 class ReadAndCreateFile 
-  
-  def initialize
-    #capitalize_fullname(firstname, lastname)
-    file = File.new("../lib/newfile.csv", "w")
-  end
-  def capitalize_fullname(firstname, lastname)
-    new_firstname = firstname.slice(0,1).capitalize + firstname.slice(1..-1)
-  #  @_firstname, @_lastname = new_firstname, lastname
+  def read_from_and_write_to 
+  record_array = Array.new
+    data =  File.read("../lib/newfile.csv") #do |data|
+    record_array = data.split(',')
+    file = File.new("../lib/employee_data.csv", "w")
+      (2...record_array.size).each do |index|
+        mod = index%2
+        file.puts "#{record_array[index]}(#{record_array[1]}:#{record_array[index + 1]})" if mod == 0
+      end
+    file.close
   end
 
  

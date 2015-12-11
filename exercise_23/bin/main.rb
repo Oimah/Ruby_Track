@@ -1,17 +1,17 @@
 require_relative "../lib/read_and_creat_file.rb"
 
 class Main
-
-  def get_file_content
-   #begin
-  ReadAndCreateFile.new
-   #rescue InvalidFileContentError
-      puts "File is empty"
-  # end
+  def read_write_file
+   begin
+    ReadAndCreateFile.new.read_from_and_write_to
+    puts "File writen successfully"
+   rescue InvalidFileContentError
+      puts "File read error"
+   end
   end
 
-  def check_name
-    raise InvalidFileContentError unless (firstname.length > 0 && lastname.length > 0 )
+  def check_file_exist
+    raise InvalidFileContentError unless 1 > 0
   end
 end
 
@@ -22,6 +22,4 @@ class InvalidFileContentError < StandardError
   end
 end
 
-#raise MyError
-
-Main.new.get_file_content
+Main.new.read_write_file
