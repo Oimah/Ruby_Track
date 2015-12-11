@@ -1,14 +1,14 @@
 require_relative "../lib/time_adder_in_range.rb"
 
 class Main
- def get_input_string_and_output_sum_of_time
- 	return_value = TimeAdderInRange.new.Sum_time_range(["23:23:07", "23:59:59"])
-  #puts return_value
-		for time in return_value
-			print time
-		end
-	puts ""
- end
+  def initialize
+     @timerange_instance =  TimeAdderInRange.new
+  end
+
+  #method to get actual sum starts here
+  def calculate_total_time
+    puts  @timerange_instance.get_actual_time(["23:01:01", "23:09:59", "23:59:59", "2:59:59", "23:59:59", "03:59:59"])  
+  end
 end
 
-Main.new.get_input_string_and_output_sum_of_time
+Main.new.calculate_total_time

@@ -1,66 +1,73 @@
 
 class TimeAdderInRange 
-  attr_accessor :_regex
-#a.transpose.map {|x| x.reduce(:+)}
-def initialize
-@_regex =/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/
-end
+  attr_accessor :_regex, :min_placeholder, :hour_placeholder, :day_placeholder
+  def initialize
+    @_regex =/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/
+  end
 
-def Sum_time_range(time_array)
-#time_sum_array = Array.new  
-if(time_array.size > 0)
-  (0...time_array.size).each do |nth|
-     if(@_regex.match(time_array[nth]))
-     first_time_array = time_array[nth].split(":")
-      time_array[nth] = first_time_array
+  def split_time_generate_array(time_array)
+    if(time_array.size > 0)
+     (0...time_array.size).each do |nth|
+        begin 
+          raise ArgumentError, 'inconrrect time format' unless @_regex.match(time_array[nth])
+          temp_time_array = time_array[nth].split(":")
+          time_array[nth] = temp_time_array
+        rescue
+          puts "incorrect time format"
+          return Array.new
+        end
+      end
     end
+    time_array
   end
-  
-  end
-  get_actual_time(time_array.transpose.map {|x| x.reduce(:+)})
-end
 
-#method to get actual sum starts here
-def get_actual_time(time_array)
-
-time_sum_array = Array.new  
- #if(@_regex.match(time_array))
-  #first_time_array = time_array.split(":")
-  size = time_array.size
-  temp_value = 0
-  min = 0
-  day = 0
-  (size-1).downto(0).each do |index|
-    place_holder = time_array[index].to_i
-    if(index.to_i == 0)
-      place_holder += min
-      temp_value = (place_holder.to_i / 24).to_f
-      mod  = place_holder.to_i % 24
-      get_day =  temp_value.to_s.split(".")
-      day = get_day[0] if( mod >= 0 && place_holder.to_i >= 24)
-      place_holder = "#{day.to_i > 0 ? day.to_i : ""} #{day.to_i > 0 ? "day" : ""}#{day.to_i > 1 ? "s" : ""}  #{mod}"  if(day.to_i > 0)
-      time_sum_array[index] = place_holder
-    else
-      #if(temp_value >= 0)
-      place_holder += min if(min > 0)
-      min = 0 if(index == 1)
-      temp_value = (place_holder.to_i / 60).to_f
-      mod  = place_holder.to_i % 60
-      get_time =  temp_value.to_s.split(".")
-      time = get_time[0] if( mod >= 0 && place_holder.to_i >= 60)
-      place_holder = ":#{mod > 0 ? mod : ""}"
-      min = time.to_i
-      time_sum_array[index] = place_holder
-      #end
+  def get_seconds(time_array)
+    @min_placeholder = 0
+    sec = 0
+    for time in time_array
+      sec += time[2].to_i 
+      if(sec > 59)
+        sec = sec % 60
+        @min_placeholder += 1
+      end
     end
-time_sum_array.push(place_holder)
-  # end
-   
+    sec
   end
-  time_sum_array
-    
- end
+
+  def get_min(time_array)
+    @hour_placeholder = 0
+    min = @min_placeholder.to_i
+    for time in time_array
+      min += time[1].to_i 
+      if(min > 59)
+        min = min % 60
+        @hour_placeholder += 1
+      end
+    end
+    min
+  end
 
 
+  def get_hour(time_array)
+    @day_placeholder = 0
+    hour = @hour_placeholder.to_i
+    for time in time_array
+      hour += time[0].to_i 
+      if(hour > 23)
+        hour = hour % 24
+        @day_placeholder += 1
+      end
+    end
+    hour
+  end
 
+  #method to get actual sum starts here
+  def get_actual_time(_time_array)
+    time_array = split_time_generate_array(_time_array)
+    sec = get_seconds(time_array)
+    min =get_min(time_array)
+    hour = get_hour(time_array)
+    output_string = "#{@day_placeholder.to_i > 0 ? @day_placeholder.to_i : ""} #{@day_placeholder.to_i > 0 ? "day" : ""}#{@day_placeholder.to_i > 1 ? "s" : ""}  #{hour}:#{min}:#{sec}"  
+    output_string
+  end
 end
