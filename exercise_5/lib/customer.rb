@@ -1,8 +1,7 @@
-class Customer
+class CustomerAccountDetail
   attr_accessor :name, :account_no, :balance
  
-  def initialize(name)
-    
+  def initialize(name) 
   	@name = name
     number_initializer = number_initializer.to_i + 1
     @account_no = "0000000#{number_initializer}"
@@ -10,7 +9,7 @@ class Customer
   end
 
   def deposit(amount)
-  @balance += amount
+    @balance += amount
   end
 
   def withdraw(amount)

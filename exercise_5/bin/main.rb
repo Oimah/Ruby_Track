@@ -4,7 +4,7 @@ class Main
   def  initialize
   	puts "Customer name"
   	name = gets.to_s.chomp
-  	customer = Customer.new(name)
+  	customer = CustomerAccountDetail.new(name)
     action_to_perform(customer)
   end
   			
