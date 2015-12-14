@@ -1,6 +1,5 @@
 class ReplaceVowel
  
- 
   def find_vowels_and_replace(input_string)
     vowels = ["a", "e", "i", "o", "u"]
     vowels.each do |v|
