@@ -1,11 +1,11 @@
-class ReplaceVowel
+class String
  
-  def find_vowels_and_replace(input_string)
-    vowels = ["a", "e", "i", "o", "u"]
-    vowels.each do |v|
-      input_string = input_string. gsub(/#{v}/i , '*') if ( input_string =~ /#{v}/ )
-    end
-    print "Vowels replaced in #{input_string}" 
+  def find_vowels_and_replace
+   # vowels = ["a", "e", "i", "o", "u"]
+    #vowels.each do |v|
+      self.gsub(/^aeiou/ , '*') #if ( input_string =~ /#{v}/ )
+    #end
+    print "Vowels replaced in #{self}" 
     puts ""
   end
 end

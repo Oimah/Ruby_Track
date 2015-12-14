@@ -9,7 +9,7 @@ class TimeAdderInRange
     if(time_array.size > 0)
      (0...time_array.size).each do |nth|
         begin 
-          raise ArgumentError, 'inconrrect time format' unless @_regex.match(time_array[nth])
+        raise ArgumentError, 'inconrrect time format' unless @_regex.match(time_array[nth])
           temp_time_array = time_array[nth].split(":")
           time_array[nth] = temp_time_array
         rescue
@@ -61,7 +61,6 @@ class TimeAdderInRange
     hour
   end
 
-  #method to get actual sum starts here
   def get_actual_time(_time_array)
     time_array = split_time_generate_array(_time_array)
     sec = get_seconds(time_array)
