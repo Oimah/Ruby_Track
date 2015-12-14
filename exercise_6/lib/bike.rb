@@ -7,8 +7,4 @@ class Bike < Vehicle
     @price = 10000000
     @dealer = "White house autors"
   end
-
-  def get_dealer
-  @dealer
-end
  end
