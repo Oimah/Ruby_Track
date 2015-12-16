@@ -1,8 +1,7 @@
 class String
  
   def find_vowels_and_replace
-   self.gsub!(/[aeiou]/ , '*') 
-    print "Vowels replaced in #{self}" 
+    print "Vowels replaced in #{gsub!(/[aeiou]/ , '*') }" 
     puts ""
   end
 end
