@@ -1,20 +1,11 @@
-class ChangeFactorialWithRange 
+class Fixnum 
 
-def range_factorial_rewrite(factorial)
+def range_factorial_rewrite
   hash = Hash.new
-  factorial_string = ""
-  default = 1
-  if(factorial.to_i == 0)
-    hash["factorial"] = "1"
-    hash["result"] = default
-    return hash
-  end
-(factorial).downto(1).each do |i| 
-    factorial_string.concat("#{i} #{i == 1 ? "" : "*"} ")
-    default *= i
-end
-  hash["factorial"] = factorial_string
-  hash["result"] =  default
+  (2..self).collect{|i| 
+    hash["result"] =(hash["result"].to_i == 0 ? 1 : hash["result"].to_i ) * i 
+    hash["factorial"] =hash["factorial"].to_s.insert(0, "#{i} #{i - 1 == 1 ? "* 1 " : "*"} ")  
+  }
   hash
 end
 end

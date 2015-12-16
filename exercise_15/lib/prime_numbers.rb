@@ -1,16 +1,9 @@
 require 'prime'
-class PrimeNumber 
+class Fixnum 
 
-  def get_prime_number_in_a_range(string_value)
+  def get_prime_number_in_a_range
     prime_number_array = Array.new
-    if(string_value.to_i < 0)
-     return "number must >= 2"
-  	end
-  	(0..string_value.to_i).step(1).each do |n|
-      if(Prime.prime?(n)) 
-        prime_number_array.push(n)
-      end 
-    end
-  	"Prime Number from 0-#{string_value}\n #{prime_number_array}"
+  	(0..self).step(1).each{|n| prime_number_array.push(n)  if Prime.prime?(n)}
+  	"Prime Number from 0-#{self}\n #{prime_number_array}"
   end
 end

@@ -1,8 +1,7 @@
 
-class HighLightMatchingString 
+class String 
 
-  def match_string(string_value, search_string)
-    string_value = string_value.gsub(/(#{search_string})/i , '(\1)')
-  	"Matched string\n #{string_value}"
+  def match_string(string_value)
+   puts "Matched string\n #{string_value.gsub(/(#{self})/i , '(\1)')}" 
   end
 end
