@@ -67,6 +67,5 @@ class TimeAdderInRange
     min =get_min(time_array)
     hour = get_hour(time_array)
     output_string = "#{@day_placeholder.to_i > 0 ? @day_placeholder.to_i : ""} #{@day_placeholder.to_i > 0 ? "day" : ""}#{@day_placeholder.to_i > 1 ? "s" : ""}  #{hour}:#{min}:#{sec}"  
-    output_string
   end
 end

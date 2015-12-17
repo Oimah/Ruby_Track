@@ -3,4 +3,4 @@
  puts "Enter a sentence"
  string_value = gets.chomp.to_s
  puts "Enter a string to search"
- gets.chomp.to_s.match_string(string_value)
+ puts gets.chomp.to_s.match_string(string_value)

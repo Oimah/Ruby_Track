@@ -1,12 +1,8 @@
 require_relative "../lib/name.rb"
     
-   puts "Enter Firstname"
-   @Firstname =  gets.chomp.to_s
-   puts "Enter Lastname"
-   @Lastname = gets.chomp.to_s
-  
-   name = Name.new(@Firstname, @Lastname)
-   puts "#{name._firstname} #{name._lastname}"
+  puts "Enter Firstname and Lastname" 
+  name = Name.new(gets.chomp.to_s, gets.chomp.to_s)
+  puts "#{name._firstname} #{name._lastname}"
   
 
 

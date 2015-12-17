@@ -1,28 +1,17 @@
-class ChangeFactorialWithRangeAndCatchException 
+class Fixnum 
 
-  def range_factorial_rewrite_with_exception(factorial)
+  def range_factorial_rewrite_with_exception
     hash = Hash.new
     begin
-    raise ArgumentError , "That is an invalid number" unless factorial.to_i > 0
-      factorial_string = ""
-      default = 1
-      if(factorial.to_i == 0)
-        hash["factorial"] = "1"
-        hash["result"] = default
-        return hash
-      end
-      (factorial).downto(1).each do |i| 
-        factorial_string.concat("#{i} #{i == 1 ? "" : "*"} ")
-        default *= i
-      end
-      hash["factorial"] = factorial_string
-      hash["result"] =  default
+    raise ArgumentError , "That is an invalid number" unless self.to_i > 0 
+      (2..self).collect{|i| 
+        hash["result"] =(hash["result"].to_i == 0 ? 1 : hash["result"].to_i ) * i 
+        hash["factorial"] =hash["factorial"].to_s.insert(0, "#{i} #{i - 1 == 1 ? "* 1 " : "*"} ")  
+      }
       hash
     rescue ArgumentError
-      hash["factorial"] = "invalid number"
-      hash["result"] =  factorial
-      hash
+     puts "That is an invalid number"
+     hash
     end
-
   end
 end
