@@ -1,6 +1,6 @@
 class String 
 
   def reverse_string
-    "\nReversed output:\n".concat(self.reverse)
+    "\nReversed output:\n#{self.reverse}"
   end
 end
