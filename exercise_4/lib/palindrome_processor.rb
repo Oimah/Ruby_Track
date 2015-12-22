@@ -11,9 +11,7 @@ class String
   	end
 
   	puts "Please enter Q/q to exit or press any other key to continue"
-
-  	key = gets.chomp.strip
-  	if (key.downcase != "q")
+  	if (gets.chomp.strip.downcase != "q")
       puts "Enter another string"
       gets.to_s.check_if_word_is_palindrome
   	end
