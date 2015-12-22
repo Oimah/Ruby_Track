@@ -10,18 +10,18 @@ def generate_case_count_hash(string_value)
   string_array = string_value.chomp.delete(" ").split("")
   string_array.each do |c|
   case get_character_case(c)
-    when 1 then uppercase_count+= 1
-    when 2 then lowercase_count+= 1
-    when 3 then number_count+= 1
+    when 1 then uppercase_count += 1
+      hash[:uppercase_count] = uppercase_count
+    when 2 then lowercase_count += 1
+      hash[:lowercase_count] = lowercase_count
+    when 3 then number_count += 1
+      hash[:number_count] = number_count
   else
-    special_character_count+= 1
+    special_character_count += 1
+    hash[:special_character_count] = special_character_count
   end
 
 end
-  hash[:uppercase_count] =uppercase_count
-  hash[:lowercase_count] =lowercase_count
-  hash[:number_count] =number_count
-  hash[:special_character_count] =special_character_count
   hash
 end
 
