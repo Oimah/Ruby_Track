@@ -1,5 +1,4 @@
 class String
- 
   def check_if_word_is_palindrome
   	word_palindrome = self.gsub(/[," "]/, "").strip.downcase
   	reversed_word = word_palindrome.reverse
