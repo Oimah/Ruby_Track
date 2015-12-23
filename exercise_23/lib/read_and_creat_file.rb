@@ -1,6 +1,7 @@
 class ReadAndCreateFile 
   def read_from_and_write_to
-    file_param = "../lib/read_and_create_file.csv"
+    file_param = File.expand_path("../read_and_create_file.csv", __FILE__)
+    #puts file_param
     begin
     raise InvalidFileContentError  unless File.file?(file_param)
     record_array = File.read(file_param).split(',')
