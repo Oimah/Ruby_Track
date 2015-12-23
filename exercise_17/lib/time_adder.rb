@@ -6,8 +6,12 @@ class TimeAdder
     if(regex.match(time_split[0]) && regex.match(time_split[1]))
       time = get_total_time(Time.parse(time_split[0]), Time.parse(time_split[1]))
       day = time.day - Time.parse(time_split[0]).day 
+      print "#{day  > 0 ? day  : ""} #{day > 0 ? "day ,": ""} #{time.hour}:#{time.min}: #{time.sec}"
+
+    else
+      raise "Invalid time"  
     end
-    print "#{day  > 0 ? day  : ""} #{day > 0 ? "day ,": ""} #{time.hour}:#{time.min}: #{time.sec}"
+    
   end
 
   def get_total_time(time1, time2)
