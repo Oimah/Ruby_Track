@@ -1,24 +1,16 @@
 class CharacterCount 
 
   def generate_case_count_hash(string_value)
-    hash = Hash.new
-    uppercase_count = 0
-    lowercase_count = 0
-    number_count = 0
-    special_character_count = 0
+    hash = Hash.new(0);
 
     string_array = string_value.chomp.delete(" ").split("")
     string_array.each do |c|
     case get_character_case(c)
-      when 1 then uppercase_count += 1
-        hash[:uppercase_count] = uppercase_count
-      when 2 then lowercase_count += 1
-        hash[:lowercase_count] = lowercase_count
-      when 3 then number_count += 1
-        hash[:number_count] = number_count
+      when 1 then hash[:uppercase_count] += 1
+      when 2 then hash[:lowercase_count] += 1
+      when 3 then hash[:number_count] += 1
     else
-      special_character_count += 1
-      hash[:special_character_count] = special_character_count
+       hash[:special_character_count] += 1
     end
 
   end
