@@ -1,3 +1,4 @@
+require_relative "invalid_file_content_error.rb"
 class ReadAndCreateFile 
   def read_from_and_write_to
     file_param = File.expand_path("../read_and_create_file.csv", __FILE__)
@@ -14,8 +15,3 @@ class ReadAndCreateFile
   end 
 end
 
-class InvalidFileContentError < StandardError
-  def initialize(msg="File is empty" )
-    super
-  end
-end

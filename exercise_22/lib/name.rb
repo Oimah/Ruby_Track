@@ -1,3 +1,4 @@
+require_relative "invalid_name_error.rb"
 
 class Name 
   attr_accessor :_firstname, :_lastname
@@ -18,10 +19,6 @@ class Name
 
 end
 
-class InvalidNameError < StandardError
-  def initialize(msg="That is an invalid name" )
-    super
-  end
-end
+
 
 
